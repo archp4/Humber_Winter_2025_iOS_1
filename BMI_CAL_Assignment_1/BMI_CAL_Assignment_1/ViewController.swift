@@ -39,22 +39,22 @@ class ViewController: UIViewController {
         var height = Double(heightTFOutlet.text ?? "") ?? 0.0
         var isError = false
         var message = ""
-        if weight > 0 && height > 0{
+        if weight > 0 && height > 0 && weight < 300 && height < 300{
             var tempHeight = selectedIndex == 0 ? height * 0.01 : height * 0.0254
             var tempWeight = selectedIndex == 0 ? weight : weight * 0.453592
             var result = calc_bmi(height: tempHeight, weight: tempWeight)
             print("\(tempWeight) / \(tempHeight * tempHeight) : \(result)")
             if result < 18.5 {
-                message = "Your BMI is UnderWeight"
+                message = "Your BMI is UnderWeight \(String(format: "%.2f", (result)))"
                 isError = false
             } else if result < 24.9 {
-                message = "Your BMI is Normal"
+                message = "Your BMI is Normal \(String(format: "%.2f", (result)))"
                 isError = false
             } else if result < 29.9 {
-                message = "Your BMI is Overweight"
+                message = "Your BMI is Overweight \(String(format: "%.2f", (result)))"
                 isError = false
             } else if result < 100 {
-                message = "Your BMI is Obecity"
+                message = "Your BMI is Obecity \(String(format: "%.2f", (result)))"
                 isError = false
             } else {
                 message = "Input Error"
@@ -73,7 +73,16 @@ class ViewController: UIViewController {
     
 
     
+    @IBOutlet weak var resetButton: UIButton!
     
+    @IBAction func reseter(_ sender: Any) {
+        reset()
+    }
+    
+    func reset(){
+        weightTFOutlet.text = ""
+        heightTFOutlet.text = ""
+    }
     
     
     func calc_bmi(height inCM: Double, weight inKG: Double) -> Double {
@@ -83,6 +92,7 @@ class ViewController: UIViewController {
     func updateLabels(){
         weightLabelIB.text = weightLabels[selectedIndex]
         heightLabelIB.text = heightLabels[selectedIndex]
+        reset()
     }
 
     
