@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         }
         
         resultLabelIB.text = message
-        resultLabelIB.textColor = isError ? UIColor(_colorLiteralRed: 255, green: 0, blue: 0, alpha: 1) : UIColor(_colorLiteralRed: 0, green: 0, blue: 0, alpha: 1)
+        resultLabelIB.textColor = isError ? UIColor(_colorLiteralRed: 255, green: 0, blue: 0, alpha: 1) : UIColor(_colorLiteralRed: 255, green: 255, blue: 255, alpha: 1)
         resultLabelIB.adjustsFontSizeToFitWidth = true
     }
     
