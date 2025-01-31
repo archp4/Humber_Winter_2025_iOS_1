@@ -16,6 +16,7 @@
 		BD9F91F92D4D437D00C78073 /* week3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9F91F82D4D437D00C78073 /* week3Tests.swift */; };
 		BD9F92032D4D437D00C78073 /* week3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9F92022D4D437D00C78073 /* week3UITests.swift */; };
 		BD9F92052D4D437D00C78073 /* week3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9F92042D4D437D00C78073 /* week3UITestsLaunchTests.swift */; };
+		BD9F92142D4D517F00C78073 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9F92132D4D517F00C78073 /* Student.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		BD9F91FE2D4D437D00C78073 /* week3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = week3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD9F92022D4D437D00C78073 /* week3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = week3UITests.swift; sourceTree = "<group>"; };
 		BD9F92042D4D437D00C78073 /* week3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = week3UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BD9F92132D4D517F00C78073 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				BD9F91EA2D4D437C00C78073 /* Assets.xcassets */,
 				BD9F91EC2D4D437C00C78073 /* LaunchScreen.storyboard */,
 				BD9F91EF2D4D437C00C78073 /* Info.plist */,
+				BD9F92132D4D517F00C78073 /* Student.swift */,
 			);
 			path = week3;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				BD9F91E62D4D437B00C78073 /* ViewController.swift in Sources */,
 				BD9F91E22D4D437B00C78073 /* AppDelegate.swift in Sources */,
 				BD9F91E42D4D437B00C78073 /* SceneDelegate.swift in Sources */,
+				BD9F92142D4D517F00C78073 /* Student.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
