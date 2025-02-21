@@ -46,15 +46,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     @IBAction func onInput(_ sender: UIButton) {
-        quantityIB.text! += sender.titleLabel?.text ?? ""
+        
         if selectProduct != nil {
+            quantityIB.text! += sender.titleLabel?.text ?? ""
             var quantity = Int(quantityIB.text!) ?? 0
             var price = selectProduct?.price ?? 0
             print(quantity, price, (quantity * price))
             Total.text! = String((quantity * price))
         }
         else{
-            print(String(selectProduct?.price ?? 0 * Int(quantityIB.text!)!))
+            let alert = UIAlertController(title: "Alert", message: "Please Select Type of Product", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: false)
+            
         }
     }
     
