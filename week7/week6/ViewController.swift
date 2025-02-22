@@ -9,9 +9,16 @@ import UIKit
 
 protocol AddingNewStudentDelegate{
     
-    func addingNewStudentDidFinishWithStudnetObject(newStudent: Student)
+    func addingNewStudentDidFinishWithStudnetObject(newStudent: Student,isEdit: Bool)
     func addingNewStudentDidCancel()
 }
+
+protocol UpdateStudentDelegate{
+    
+    func updateStudentDidFinishWithStudnetObject(newStudent: Student,isEdit: Bool)
+    func updateStudentDidCancel()
+}
+
 
 
 class ViewController: UIViewController ,
@@ -19,8 +26,10 @@ class ViewController: UIViewController ,
                       UINavigationControllerDelegate {
 
     
-    var delegate : AddingNewStudentDelegate?
-    
+    var addDelegate : AddingNewStudentDelegate?
+    var updateDelegate : UpdateStudentDelegate?
+    var isEdit: Bool = false;
+    var student: Student?
     var selectedImageData : Data? = UIImage(named: "img")?.pngData()
     
     @IBOutlet weak var nameText: UITextField!
@@ -31,15 +40,27 @@ class ViewController: UIViewController ,
     @IBOutlet weak var userImage: UIImageView!
     
     var model: StudentManager?
+    var id: UUID?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        if student != nil {
+            isEdit = true
+            isEditing()
+        }
         // Do any additional setup after loading the view.
         model = ((UIApplication.shared.delegate) as! AppDelegate).myModel
     }
 
+    
+    func isEditing(){
+        nameText.text = student?.name
+        emailText.text = student?.email
+        id = student?.id
+        print(student?.id)
+        userImage.image = UIImage(data: (student?.imageData ?? UIImage(named: "img")?.pngData())!)
+    }
     
     @IBAction func uploadPhotoClicked(_ sender: Any) {
         
@@ -76,18 +97,14 @@ class ViewController: UIViewController ,
         if let name = nameText.text , let email = emailText.text {
             if !name.isEmpty , !email.isEmpty {
                
-                let alert = UIAlertController(title: "Are You Sure!", message: "New Student \(name) Will Be inserted Now", preferredStyle: .alert)
+                let alert = isEdit ? UIAlertController(title: "Are You Sure!", message: "Student \(name) Will Be update Now", preferredStyle: .alert) : UIAlertController(title: "Are You Sure!", message: "New Student \(name) Will Be inserted Now", preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                    
-                    var newStd = Student(name: name, email: email, imageData: self.selectedImageData)
-                  //  self.model?.addNewStudent(newStd: newStd)
+                    var newStd = Student(id: self.isEdit ? self.id!:UUID() , name: name, email: email, imageData: self.selectedImageData)
                     self.selectedImageData = UIImage(named: "img")?.pngData()
-                   
-                    self.delegate?.addingNewStudentDidFinishWithStudnetObject(newStudent: newStd)
+                    self.addDelegate?.addingNewStudentDidFinishWithStudnetObject(newStudent: newStd,isEdit: self.isEdit)
                     self.dismiss(animated: true)
-                    
                 }))
                 
                 present(alert, animated: true)
@@ -111,7 +128,7 @@ class ViewController: UIViewController ,
     
     
     @IBAction func CancelClicked(_ sender: Any) {
-        delegate?.addingNewStudentDidCancel()
+        addDelegate?.addingNewStudentDidCancel()
         dismiss(animated: true)
     }
     

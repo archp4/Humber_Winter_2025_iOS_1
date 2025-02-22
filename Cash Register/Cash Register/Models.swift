@@ -20,6 +20,20 @@ class Product {
         self.price = price
     }
 }
+class History {
+    var id : UUID = UUID()
+    var productName: String = ""
+    var quantity : Int = 0
+    var timestamp: Date = Date.now
+    var price : Int = 0
+    
+    init(productName: String, quantity: Int, price: Int) {
+        self.productName = productName
+        self.quantity = quantity
+        self.price = price
+    }
+}
+
 
 
 class ProductManager{
@@ -30,6 +44,8 @@ class ProductManager{
         Product(name: "Tshirts", quantity: 100, price: 15),
         Product(name: "Dresses", quantity: 200, price: 80),
     ]
+    
+    var historyList: [History] = [];
         
         
     func addNewStudent(newProduct: Product) {
@@ -57,6 +73,7 @@ class ProductManager{
             }
         if (product != nil) {
             product?.quantity -= newQuatity
+            historyList.append(History(productName: product?.name ?? "", quantity: newQuatity, price: (newQuatity * (product?.price ?? 0))))
         }
     }
     

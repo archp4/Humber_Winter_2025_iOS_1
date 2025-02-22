@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "myCell") ?? UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell") ?? UITableViewCell()
         cell.textLabel?.text = model?.productList[indexPath.row].name
         cell.detailTextLabel?.text! = String(model?.productList[indexPath.row].quantity ?? 0)
         
@@ -49,8 +49,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if selectProduct != nil {
             quantityIB.text! += sender.titleLabel?.text ?? ""
-            var quantity = Int(quantityIB.text!) ?? 0
-            var price = selectProduct?.price ?? 0
+            let quantity = Int(quantityIB.text!) ?? 0
+            let price = selectProduct?.price ?? 0
             print(quantity, price, (quantity * price))
             Total.text! = String((quantity * price))
         }
@@ -71,12 +71,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         selectedProductID = model?.productList[indexPath.row].id
         selectProduct = model?.productList[indexPath.row]
         typeIB.text = model?.productList[indexPath.row].name ?? "Error"
+        if quantityIB.text?.count ?? 0 > 0 {
+            let quantity = Int(quantityIB.text!) ?? 0
+            let price = selectProduct?.price ?? 0
+            Total.text! = String((quantity * price))
+        }
     }
     
     @IBAction func onBuy(_ sender: UIButton) {
         
         
-        if var id = selectedProductID {
+        if let id = selectedProductID {
             if quantityIB.text?.count ?? 0 > 0 {
                 let amount = Int(quantityIB.text!)
                 if ((model?.isAvaliable(productID: selectedProductID!, quatity: amount!))!) {
@@ -105,7 +110,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        productTable.reloadData()
+    }
     
     
     

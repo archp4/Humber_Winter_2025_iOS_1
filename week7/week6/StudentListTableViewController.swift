@@ -8,6 +8,8 @@
 import UIKit
 
 class StudentListTableViewController: UITableViewController , AddingNewStudentDelegate{
+    
+    
   
 
     var model: StudentManager?
@@ -40,7 +42,7 @@ class StudentListTableViewController: UITableViewController , AddingNewStudentDe
         
         cell.studentImage.image = UIImage(data: (model?.studentsList[indexPath.row].imageData!)!)
         cell.studentName.text = model?.studentsList[indexPath.row].name
-        cell.studentEmail.text =  model?.studentsList[indexPath.row].email
+        cell.studentEmail.text =  model?.studentsList[indexPath.row].id.uuidString
         
     
         return cell
@@ -48,7 +50,15 @@ class StudentListTableViewController: UITableViewController , AddingNewStudentDe
 
     
     func addingNewStudentDidFinishWithStudnetObject(newStudent: Student) {
-        model?.addNewStudent(newStd: newStudent)
+        
+        
+    }
+    func addingNewStudentDidFinishWithStudnetObject(newStudent: Student, isEdit: Bool) {
+        if isEdit {
+            model?.update(updatedStudent: newStudent)
+        } else {
+            model?.addNewStudent(newStd: newStudent)
+        }
         tableView.reloadData()
     }
     
@@ -68,6 +78,12 @@ class StudentListTableViewController: UITableViewController , AddingNewStudentDe
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
+    }
+    
+    var index: Int?
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        index = indexPath.row
     }
 
 
@@ -102,9 +118,19 @@ class StudentListTableViewController: UITableViewController , AddingNewStudentDe
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
-       var addingVC =  segue.destination as! ViewController
-        addingVC.delegate = self
+        
+        if var indexPath = tableView.indexPathForSelectedRow {
+            let addingVC = segue.destination as! ViewController
+            addingVC.student = model?.studentsList[indexPath.row]
+            addingVC.addDelegate = self
+            tableView.deselectRow(at: indexPath, animated: false)
+            tableView.reloadData()
+        } else {
+            let addingVC =  segue.destination as! ViewController
+            addingVC.addDelegate = self
+        }
+        
+        
         
     }
     

@@ -18,6 +18,11 @@ class Student {
         self.email = email
         self.imageData = imageData
     }
+    init(id: UUID, name: String, email: String, imageData: Data? = nil) {
+        self.name = name
+        self.email = email
+        self.imageData = imageData
+    }
 }
 
 class StudentManager {
@@ -34,6 +39,20 @@ class StudentManager {
         studentsList.removeAll { student in
             return student.id == idtodelete
         }
+    }
+    
+    func update(updatedStudent: Student)  {
+        let index =  studentsList.firstIndex(where: { student in
+            print(student.id,"Updated: ", updatedStudent.id)
+            return student.id == updatedStudent.id
+        })
+        
+        print(index, "In Update")
+        if index != nil {
+            print("updated")
+            studentsList[index!] = updatedStudent
+        }
+        
     }
     
 }

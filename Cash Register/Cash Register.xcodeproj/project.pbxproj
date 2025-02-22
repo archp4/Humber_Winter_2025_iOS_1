@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD2221FF2D69337A009A728A /* ManagerHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2221FE2D69337A009A728A /* ManagerHomeController.swift */; };
+		BD2222012D693579009A728A /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2222002D693579009A728A /* HistoryTableViewController.swift */; };
+		BD2222032D6939CD009A728A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2222022D6939CD009A728A /* HistoryViewController.swift */; };
+		BD2222052D6944F7009A728A /* RestockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2222042D6944F7009A728A /* RestockViewController.swift */; };
 		BD482FE02D68CEB80041B8EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD482FDF2D68CEB80041B8EA /* AppDelegate.swift */; };
 		BD482FE22D68CEB80041B8EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD482FE12D68CEB80041B8EA /* SceneDelegate.swift */; };
 		BD482FE42D68CEB80041B8EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD482FE32D68CEB80041B8EA /* ViewController.swift */; };
@@ -17,6 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD2221FE2D69337A009A728A /* ManagerHomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerHomeController.swift; sourceTree = "<group>"; };
+		BD2222002D693579009A728A /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		BD2222022D6939CD009A728A /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		BD2222042D6944F7009A728A /* RestockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestockViewController.swift; sourceTree = "<group>"; };
 		BD482FDC2D68CEB80041B8EA /* Cash Register.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cash Register.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD482FDF2D68CEB80041B8EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD482FE12D68CEB80041B8EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +66,7 @@
 		BD482FDE2D68CEB80041B8EA /* Cash Register */ = {
 			isa = PBXGroup;
 			children = (
+				BD2222042D6944F7009A728A /* RestockViewController.swift */,
 				BD482FF32D68D1EE0041B8EA /* Models.swift */,
 				BD482FDF2D68CEB80041B8EA /* AppDelegate.swift */,
 				BD482FE12D68CEB80041B8EA /* SceneDelegate.swift */,
@@ -66,6 +75,9 @@
 				BD482FE82D68CEBA0041B8EA /* Assets.xcassets */,
 				BD482FEA2D68CEBA0041B8EA /* LaunchScreen.storyboard */,
 				BD482FED2D68CEBA0041B8EA /* Info.plist */,
+				BD2221FE2D69337A009A728A /* ManagerHomeController.swift */,
+				BD2222002D693579009A728A /* HistoryTableViewController.swift */,
+				BD2222022D6939CD009A728A /* HistoryViewController.swift */,
 			);
 			path = "Cash Register";
 			sourceTree = "<group>";
@@ -141,9 +153,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD2222052D6944F7009A728A /* RestockViewController.swift in Sources */,
 				BD482FE42D68CEB80041B8EA /* ViewController.swift in Sources */,
 				BD482FE02D68CEB80041B8EA /* AppDelegate.swift in Sources */,
+				BD2222012D693579009A728A /* HistoryTableViewController.swift in Sources */,
 				BD482FE22D68CEB80041B8EA /* SceneDelegate.swift in Sources */,
+				BD2221FF2D69337A009A728A /* ManagerHomeController.swift in Sources */,
+				BD2222032D6939CD009A728A /* HistoryViewController.swift in Sources */,
 				BD482FF42D68D1EE0041B8EA /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
